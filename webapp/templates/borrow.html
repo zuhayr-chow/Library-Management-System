@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div style="margin-left: 240px; padding: 20px;">
+
+<h2>Borrow a Book</h2>
+
+<div class="container"><h2>Borrow Book</h2><form method="post">
+Member: <select name="member_id" class="form-control">{% for m in members %}<option value="{{ m.MemberID }}">{{ m.FirstName }} {{ m.LastName }}</option>{% endfor %}</select><br>
+Book: <select name="book_id" class="form-control">{% for b in books %}<option value="{{ b.BookID }}">{{ b.Title }}</option>{% endfor %}</select><br>
+<input type="submit" value="Borrow" class="btn btn-primary"></form></div></body></html>

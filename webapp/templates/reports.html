@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div style="margin-left: 240px; padding: 20px;">
+
+<h2>Library Reports</h2>
+
+<div class="container">
+  <h2>Library Reports</h2>
+
+  <h4>Most Borrowed Books (Top 5)</h4>
+  <table class="table table-striped">
+    <tr><th>Title</th><th>Times Borrowed</th></tr>
+    {% for book in popular_books %}
+      <tr>
+        <td>{{ book.Title }}</td>
+        <td>{{ book.TimesBorrowed }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h4>Total Unpaid Fines (Days Overdue)</h4>
+  <p>{{ unpaid_fines }} days overdue (For demo, each day can be $1 fine)</p>
+
+  <h4>Currently Borrowed Books</h4>
+  <p>{{ borrowed_books }} books are currently borrowed.</p>
+
+</div>
+
+</body>
+</html>

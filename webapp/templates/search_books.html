@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div style="margin-left: 240px; padding: 20px;">
+
+<div class="container">
+  <h2>Search Books</h2>
+
+  <form method="post">
+    <label>Enter Title or Author:</label>
+    <input type="text" name="keyword" class="form-control" required><br>
+    <input type="submit" value="Search" class="btn btn-primary">
+  </form>
+
+  {% if books %}
+    <h3 class="mt-4">Search Results:</h3>
+    <table class="table table-striped">
+      <tr><th>Title</th><th>Author</th><th>Available Copies</th></tr>
+      {% for b in books %}
+        <tr>
+          <td>{{ b.Title }}</td>
+          <td>{{ b.Author }}</td>
+          <td>{{ b.AvailableCopies }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% elif books is not none %}
+    <p>No books found.</p>
+  {% endif %}
+</div>
+
+</body>
+</html>

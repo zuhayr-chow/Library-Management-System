@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+{% include 'sidebar.html' %}
+
+<div style="margin-left: 240px; padding: 20px;">
+
+<h2>Add Review</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label>Book Title:</label>
+        <select name="title" class="form-control">
+            {% for book in books %}
+            <option value="{{ book.Title }}">{{ book.Title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Reviewer:</label>
+        <input type="text" name="reviewer" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Rating (1-5):</label>
+        <input type="number" name="rating" min="1" max="5" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Comment:</label>
+        <textarea name="comment" class="form-control"></textarea>
+    </div>
+
+    <input type="submit" value="Submit Review" class="btn btn-primary">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div style="margin-left: 240px; padding: 20px;">
+
+<h2>Borrowed Books</h2>
+
+<div class="container"><h2>Borrowed Books</h2><table class="table table-striped"><tr><th>Borrow ID</th><th>Name</th><th>Title</th><th>Date</th><th>Status</th></tr>
+{% for b in borrowed %}<tr><td>{{ b.BorrowID }}</td><td>{{ b.FirstName }}</td><td>{{ b.Title }}</td><td>{{ b.BorrowDate }}</td><td>{% if b.DueDate < now %}OVERDUE{% else %}{{ b.Status }}{% endif %}</td></tr>{% endfor %}
+</table></div></body></html>
