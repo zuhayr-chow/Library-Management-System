@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div style="margin-left: 240px; padding: 20px;">
+
+<h2>Fines</h2>
+
+<div class="container">
+  <h2>Fines (Overdue Books)</h2>
+
+  {% if fines %}
+  <table class="table table-striped">
+    <tr><th>Borrow ID</th><th>Name</th><th>Book</th><th>Due Date</th><th>Return Date</th><th>Overdue Days</th><th>Action</th></tr>
+    {% for fine in fines %}
+      <tr>
+        <td>{{ fine.BorrowID }}</td>
+        <td>{{ fine.FirstName }}</td>
+        <td>{{ fine.Title }}</td>
+        <td>{{ fine.DueDate }}</td>
+        <td>{{ fine.ReturnDate if fine.ReturnDate else 'Not Returned' }}</td>
+        <td>{{ fine.OverdueDays }}</td>
+        <td>
+          <form method="post">
+            <input type="hidden" name="borrow_id" value="{{ fine.BorrowID }}">
+            <input type="submit" value="Mark as Paid" class="btn btn-success btn-sm">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>No unpaid fines found.</p>
+  {% endif %}
+</div>
+
+</body>
+</html>
