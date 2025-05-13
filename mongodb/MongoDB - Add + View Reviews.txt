@@ -1,0 +1,11 @@
+use LibraryNoSQL
+
+db.BookReviews.insertOne({
+  title: "The Great Gatsby",
+  reviewer: "Hamza",
+  rating: 5,
+  comment: "Was an intense and amazing read!"
+});
+
+-- Show all reviews
+db.BookReviews.find().pretty();
